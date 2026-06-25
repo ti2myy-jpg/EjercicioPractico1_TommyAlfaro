@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Categorias')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <section th:replace="~{fragmentos/marco :: avisos}"></section>
+        <main class="container py-4">
+            <section class="modulo-captura">
+                <div>
+                    <span class="rotulo-modulo">Catalogo</span>
+                    <h2>Registrar categoria</h2>
+                </div>
+                <form class="formulario-en-linea" th:action="@{/areas/guardar}" th:object="${areaNueva}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="campo-flex">
+                        <label class="form-label" for="nombre">Nombre de categoria</label>
+                        <input class="form-control" id="nombre" th:field="*{nombre}" required maxlength="100"/>
+                        <div class="text-danger small" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                    </div>
+                    <button class="btn btn-coral boton-alto" type="submit">
+                        <i class="fa-solid fa-plus me-2"></i>Agregar
+                    </button>
+                </form>
+            </section>
+
+            <section class="panel-registros">
+                <div class="titulo-lista">
+                    <h2>Categorias de entrenamiento</h2>
+                    <span th:text="${#lists.size(areasDisponibles)} + ' registros'">0 registros</span>
+                </div>
+                <div class="table-responsive panel-tabla">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Categoria</th>
+                                <th class="text-end">Gestion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="area : ${areasDisponibles}">
+                                <td th:text="${area.id}"></td>
+                                <td th:text="${area.nombre}"></td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-outline-dark" th:href="@{/areas/editar/{codigo}(codigo=${area.id})}">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-danger" type="button"
+                                            data-bs-toggle="modal" data-bs-target="#modalBorrar"
+                                            th:data-codigo="${area.id}" th:data-nombre="${area.nombre}">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(areasDisponibles)}">
+                                <td colspan="3" class="text-center py-4">No hay categorias registradas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <section th:replace="~{fragmentos/modal :: borrar('/areas/borrar')}"></section>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>

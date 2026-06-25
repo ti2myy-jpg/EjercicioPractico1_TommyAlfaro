@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Editar categoria')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <main class="container py-5">
+            <section class="editor-horizontal">
+                <div class="editor-titulo">
+                    <span class="rotulo-modulo">Edicion</span>
+                    <h2>Categoria</h2>
+                </div>
+                <form class="formulario-en-linea" th:action="@{/areas/guardar}" th:object="${areaNueva}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="campo-flex">
+                        <label class="form-label" for="nombre">Nombre de categoria</label>
+                        <input class="form-control" id="nombre" th:field="*{nombre}" required maxlength="100"/>
+                    </div>
+                    <a class="btn btn-teal boton-alto" th:href="@{/areas}">Volver</a>
+                    <button class="btn btn-coral boton-alto" type="submit">Guardar</button>
+                </form>
+            </section>
+        </main>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Clases')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <section th:replace="~{fragmentos/marco :: avisos}"></section>
+        <main class="container py-4">
+            <section class="modulo-captura">
+                <div>
+                    <span class="rotulo-modulo">Programacion</span>
+                    <h2>Nueva clase</h2>
+                </div>
+                <form class="formulario-en-linea tres-columnas" th:action="@{/sesiones/guardar}" th:object="${sesionNueva}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="campo-flex">
+                        <label class="form-label" for="nombre">Clase</label>
+                        <input class="form-control" id="nombre" th:field="*{nombre}" required maxlength="100"/>
+                    </div>
+                    <div class="campo-flex campo-corto">
+                        <label class="form-label" for="precio">Precio</label>
+                        <input class="form-control" id="precio" type="number" min="0.01" step="0.01" th:field="*{precio}" required/>
+                    </div>
+                    <div class="campo-flex">
+                        <label class="form-label" for="categoria">Categoria</label>
+                        <select class="form-select" id="categoria" th:field="*{categoria}" required>
+                            <option value="">Elija una categoria</option>
+                            <option th:each="area : ${areasElegibles}" th:value="${area.id}" th:text="${area.nombre}"></option>
+                        </select>
+                    </div>
+                    <button class="btn btn-coral boton-alto" type="submit">
+                        <i class="fa-solid fa-plus me-2"></i>Agregar
+                    </button>
+                </form>
+            </section>
+
+            <section class="panel-registros">
+                <div class="titulo-lista">
+                    <h2>Clases de entrenamiento</h2>
+                    <span th:text="${#lists.size(sesionesDisponibles)} + ' clases'">0 clases</span>
+                </div>
+                <div class="table-responsive panel-tabla">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Clase</th>
+                                <th>Categoria</th>
+                                <th>Precio</th>
+                                <th class="text-end">Gestion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="sesion : ${sesionesDisponibles}">
+                                <td th:text="${sesion.id}"></td>
+                                <td th:text="${sesion.nombre}"></td>
+                                <td th:text="${sesion.categoria.nombre}"></td>
+                                <td th:text="${'CRC ' + #numbers.formatDecimal(sesion.precio, 1, 'COMMA', 2, 'POINT')}"></td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-outline-dark" th:href="@{/sesiones/editar/{codigo}(codigo=${sesion.id})}">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-danger" type="button"
+                                            data-bs-toggle="modal" data-bs-target="#modalBorrar"
+                                            th:data-codigo="${sesion.id}" th:data-nombre="${sesion.nombre}">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(sesionesDisponibles)}">
+                                <td colspan="5" class="text-center py-4">No hay clases registradas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <section th:replace="~{fragmentos/modal :: borrar('/sesiones/borrar')}"></section>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>

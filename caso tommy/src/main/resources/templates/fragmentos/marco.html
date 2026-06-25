@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="cabecera(titulo)">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title th:text="${titulo} + ' | Gimnasio Fitness'">Gimnasio Fitness</title>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.min.css}" rel="stylesheet"/>
+        <link th:href="@{/css/tommyfit.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}" defer></script>
+        <script th:src="@{/js/tommyfit.js}" defer></script>
+    </head>
+    <body>
+        <header th:fragment="menu">
+            <nav class="navbar navbar-expand-lg navbar-light navegacion-yoga">
+                <div class="container">
+                    <a class="navbar-brand marca-yoga" th:href="@{/}">
+                        <i class="fa-solid fa-dumbbell me-2"></i>Gimnasio Fitness
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuYoga">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="menuYoga">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/areas}">Categorias</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/sesiones}">Clases</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/cupos}">Reservas</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/mensajes}">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="franja-estudio">
+                <div class="container py-4">
+                    <span class="texto-mini">Gimnasio y centro fitness</span>
+                    <h1 class="h2 mb-0">Entrenar, respirar y avanzar cada dia</h1>
+                </div>
+            </div>
+        </header>
+
+        <section th:fragment="avisos">
+            <div class="container pt-3">
+                <div th:if="${mensajeBueno}" class="alert aviso-ok alert-dismissible fade show" role="alert">
+                    <i class="fa-solid fa-circle-check me-2"></i><span th:text="${mensajeBueno}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <div th:if="${mensajeMalo}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i><span th:text="${mensajeMalo}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        </section>
+
+        <footer th:fragment="pie" class="pie-yoga mt-5">
+            <div class="container py-4 d-flex flex-column flex-md-row justify-content-between gap-2">
+                <span>Gimnasio Fitness</span>
+                
+            </div>
+        </footer>
+    </body>
+</html>

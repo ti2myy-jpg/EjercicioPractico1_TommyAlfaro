@@ -1,0 +1,344 @@
+:root {
+    --crema: #fff7ed;
+    --teal: #0f766e;
+    --teal-oscuro: #134e4a;
+    --coral: #e76f51;
+    --arena: #f4e1c1;
+    --tinta: #263238;
+}
+
+body {
+    background: var(--crema);
+    color: var(--tinta);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.navegacion-yoga {
+    background: #ffffff;
+    border-bottom: 3px solid var(--arena);
+}
+
+.marca-yoga {
+    color: var(--teal-oscuro);
+    font-weight: 700;
+}
+
+.franja-estudio,
+.pie-yoga {
+    background: var(--teal-oscuro);
+    color: #ffffff;
+}
+
+.texto-mini,
+.sello-yoga {
+    color: var(--coral);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.home-tommy {
+    background: #fffaf3;
+}
+
+.cartel-home {
+    background: var(--teal-oscuro);
+    color: #ffffff;
+    padding: 2.25rem 0 7rem;
+}
+
+.cartel-superior {
+    max-width: 880px;
+}
+
+.cartel-superior h2 {
+    color: #ffffff;
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0.3rem 0;
+}
+
+.cartel-superior p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    margin: 0;
+    max-width: 680px;
+}
+
+.rotulo-home {
+    color: var(--coral);
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.video-home {
+    margin-top: -5rem;
+}
+
+.video-principal {
+    background: var(--arena);
+    border: 0;
+    box-shadow: 0 20px 0 rgba(231, 111, 81, 0.18);
+    padding: 0.75rem;
+}
+
+.barra-acciones-home {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid var(--arena);
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr auto auto auto;
+    margin-top: 2.5rem;
+    padding: 1rem;
+}
+
+.barra-acciones-home strong {
+    color: var(--teal-oscuro);
+    display: block;
+    font-size: 1.25rem;
+}
+
+.resumen-operativo {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.resumen-operativo div {
+    background: var(--teal-oscuro);
+    color: #ffffff;
+    min-height: 150px;
+    padding: 1.25rem;
+}
+
+.resumen-operativo span {
+    color: var(--coral);
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.resumen-operativo p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5rem 0 0;
+}
+
+.btn-coral {
+    background: var(--coral);
+    border-color: var(--coral);
+    color: #ffffff;
+}
+
+.btn-coral:hover {
+    background: #c85b42;
+    border-color: #c85b42;
+    color: #ffffff;
+}
+
+.btn-teal {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #ffffff;
+}
+
+.btn-teal:hover {
+    background: var(--teal-oscuro);
+    border-color: var(--teal-oscuro);
+    color: #ffffff;
+}
+
+.caja-forma,
+.panel-tabla,
+.tarjeta-contacto {
+    background: #ffffff;
+    border: 1px solid var(--arena);
+    border-radius: 4px;
+    padding: 1.25rem;
+}
+
+.caja-forma h2,
+.titulo-lista h2 {
+    color: var(--teal-oscuro);
+}
+
+.modulo-captura,
+.editor-horizontal {
+    align-items: end;
+    background: var(--teal-oscuro);
+    border-left: 10px solid var(--coral);
+    color: #ffffff;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 240px 1fr;
+    margin-bottom: 1.75rem;
+    padding: 1.25rem;
+}
+
+.modulo-captura h2,
+.editor-horizontal h2 {
+    color: #ffffff;
+    margin: 0;
+}
+
+.formulario-en-linea {
+    align-items: end;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(220px, 1fr) auto;
+}
+
+.formulario-en-linea.tres-columnas {
+    grid-template-columns: minmax(220px, 1.4fr) minmax(140px, 0.7fr) minmax(220px, 1fr) auto;
+}
+
+.campo-flex label,
+.formulario-en-linea .form-label {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+}
+
+.formulario-en-linea .form-control,
+.formulario-en-linea .form-select {
+    border: 0;
+    border-radius: 0;
+    min-height: 44px;
+}
+
+.campo-corto {
+    min-width: 130px;
+}
+
+.boton-alto {
+    border-radius: 0;
+    min-height: 44px;
+    white-space: nowrap;
+}
+
+.panel-registros {
+    background: #ffffff;
+    border: 1px solid var(--arena);
+}
+
+.titulo-lista {
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 4px solid var(--arena);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+}
+
+.titulo-lista span {
+    background: var(--teal);
+    color: #ffffff;
+    padding: 0.35rem 0.7rem;
+}
+
+.panel-tabla {
+    border: 0;
+    padding: 0;
+}
+
+.table thead th {
+    background: #fffaf3;
+    color: var(--teal-oscuro);
+}
+
+.formulario-mediano {
+    margin: 0 auto;
+    max-width: 620px;
+}
+
+.editor-titulo {
+    align-self: center;
+}
+
+.contacto-redisenado {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    min-height: 520px;
+}
+
+.contacto-datos {
+    background: var(--teal-oscuro);
+    color: #ffffff;
+    padding: 2rem;
+}
+
+.contacto-datos h2 {
+    color: #ffffff;
+    font-size: 2.25rem;
+}
+
+.contacto-datos p {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+.dato-contacto {
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    display: flex;
+    gap: 0.8rem;
+    padding: 1rem 0;
+}
+
+.dato-contacto i {
+    color: var(--coral);
+    width: 20px;
+}
+
+.contacto-formulario {
+    background: #ffffff;
+    border: 1px solid var(--arena);
+    padding: 2rem;
+}
+
+.contacto-formulario h2 {
+    color: var(--teal-oscuro);
+    font-size: 2.25rem;
+}
+
+.grid-contacto {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal-coral {
+    background: var(--coral);
+    color: #ffffff;
+}
+
+.aviso-ok {
+    background: #dff3ee;
+    border-color: #a9d9cf;
+    color: var(--teal-oscuro);
+}
+
+@media (max-width: 900px) {
+    .modulo-captura,
+    .editor-horizontal,
+    .formulario-en-linea,
+    .formulario-en-linea.tres-columnas,
+    .contacto-redisenado,
+    .grid-contacto,
+    .barra-acciones-home,
+    .resumen-operativo {
+        grid-template-columns: 1fr;
+    }
+
+    .cartel-superior h2 {
+        font-size: 2.5rem;
+    }
+}

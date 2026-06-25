@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Contacto')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <section th:replace="~{fragmentos/marco :: avisos}"></section>
+        <main class="container py-5">
+            <section class="contacto-redisenado">
+                <aside class="contacto-datos">
+                    <span class="rotulo-modulo">Atencion al cliente</span>
+                    <h2>Quejas y sugerencias</h2>
+                    <p>Espacio visual para consultas del gimnasio. Este formulario no guarda datos en MySQL.</p>
+                    <div class="dato-contacto">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>soporte@gimnasiofitcr.test</span>
+                    </div>
+                    <div class="dato-contacto">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+506 7219-8830</span>
+                    </div>
+                    <div class="dato-contacto">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Heredia, Costa Rica</span>
+                    </div>
+                </aside>
+                <section class="contacto-formulario">
+                    <h2>Enviar mensaje</h2>
+                    <form th:action="@{/mensajes/enviar}" method="post">
+                        <div class="grid-contacto">
+                            <div>
+                                <label class="form-label" for="nombrePersona">Nombre</label>
+                                <input class="form-control" id="nombrePersona" name="nombrePersona" required maxlength="100"/>
+                            </div>
+                            <div>
+                                <label class="form-label" for="correoPersona">Correo electronico</label>
+                                <input class="form-control" id="correoPersona" name="correoPersona" type="email" required maxlength="120"/>
+                            </div>
+                        </div>
+                        <label class="form-label mt-3" for="detallePersona">Mensaje</label>
+                        <textarea class="form-control" id="detallePersona" name="detallePersona" rows="7" required></textarea>
+                        <div class="text-end mt-3">
+                            <button class="btn btn-coral px-4" type="submit">
+                                <i class="fa-solid fa-paper-plane me-2"></i>Enviar mensaje
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </section>
+        </main>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>

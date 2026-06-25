@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Editar reserva')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <main class="container py-5">
+            <section class="editor-horizontal">
+                <div class="editor-titulo">
+                    <span class="rotulo-modulo">Edicion</span>
+                    <h2>Reserva</h2>
+                </div>
+                <form class="formulario-en-linea tres-columnas" th:action="@{/cupos/guardar}" th:object="${cupoNuevo}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="campo-flex">
+                        <label class="form-label" for="nombreCliente">Participante</label>
+                        <input class="form-control" id="nombreCliente" th:field="*{nombreCliente}" required maxlength="100"/>
+                    </div>
+                    <div class="campo-flex campo-corto">
+                        <label class="form-label" for="fecha">Fecha</label>
+                        <input class="form-control" id="fecha" type="date" th:field="*{fecha}" required/>
+                    </div>
+                    <div class="campo-flex">
+                        <label class="form-label" for="servicio">Clase</label>
+                        <select class="form-select" id="servicio" th:field="*{servicio}" required>
+                            <option th:each="sesion : ${sesionesElegibles}" th:value="${sesion.id}" th:text="${sesion.nombre}"></option>
+                        </select>
+                    </div>
+                    <a class="btn btn-teal boton-alto" th:href="@{/cupos}">Volver</a>
+                    <button class="btn btn-coral boton-alto" type="submit">Guardar</button>
+                </form>
+            </section>
+        </main>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>

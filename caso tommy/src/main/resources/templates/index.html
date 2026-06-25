@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Inicio')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <main class="home-tommy">
+            <section class="cartel-home">
+                <div class="container">
+                    <div class="cartel-superior">
+                        <span class="rotulo-home">Clase destacada del mes</span>
+                        <h2>Yoga Fitness</h2>
+                        <p>Flexibilidad, control corporal y respiracion para complementar el entrenamiento del gimnasio.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="video-home">
+                <div class="container">
+                    <div class="video-principal">
+                        <div class="ratio ratio-21x9">
+                            <iframe src="https://www.youtube.com/embed/v7AYKMP6rOE"
+                                    title="Clase destacada de Yoga"
+                                    allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container">
+                <div class="barra-acciones-home">
+                    <div>
+                        <span class="rotulo-home">Disponible esta semana</span>
+                        <strong>Clase de Yoga - Flexibilidad</strong>
+                    </div>
+                    <a class="btn btn-coral" th:href="@{/cupos}">
+                        <i class="fa-solid fa-calendar-plus me-2"></i>Reservar
+                    </a>
+                    <a class="btn btn-teal" th:href="@{/sesiones}">
+                        <i class="fa-solid fa-list-check me-2"></i>Clases
+                    </a>
+                    <a class="btn btn-outline-dark" th:href="@{/mensajes}">
+                        <i class="fa-solid fa-message me-2"></i>Consultar
+                    </a>
+                </div>
+            </section>
+
+            <section class="container py-4">
+                <div class="resumen-operativo">
+                    <div>
+                        <span>01</span>
+                        <p>Categorias de entrenamiento para organizar la oferta del gimnasio.</p>
+                    </div>
+                    <div>
+                        <span>02</span>
+                        <p>Clases con precio y categoria asignada desde el mantenimiento.</p>
+                    </div>
+                    <div>
+                        <span>03</span>
+                        <p>Reservas por cliente, fecha y clase seleccionada.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Editar clase')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <main class="container py-5">
+            <section class="editor-horizontal">
+                <div class="editor-titulo">
+                    <span class="rotulo-modulo">Edicion</span>
+                    <h2>Clase</h2>
+                </div>
+                <form class="formulario-en-linea tres-columnas" th:action="@{/sesiones/guardar}" th:object="${sesionNueva}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="campo-flex">
+                        <label class="form-label" for="nombre">Clase</label>
+                        <input class="form-control" id="nombre" th:field="*{nombre}" required maxlength="100"/>
+                    </div>
+                    <div class="campo-flex campo-corto">
+                        <label class="form-label" for="precio">Precio</label>
+                        <input class="form-control" id="precio" type="number" min="0.01" step="0.01" th:field="*{precio}" required/>
+                    </div>
+                    <div class="campo-flex">
+                        <label class="form-label" for="categoria">Categoria</label>
+                        <select class="form-select" id="categoria" th:field="*{categoria}" required>
+                            <option th:each="area : ${areasElegibles}" th:value="${area.id}" th:text="${area.nombre}"></option>
+                        </select>
+                    </div>
+                    <a class="btn btn-teal boton-alto" th:href="@{/sesiones}">Volver</a>
+                    <button class="btn btn-coral boton-alto" type="submit">Guardar</button>
+                </form>
+            </section>
+        </main>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>

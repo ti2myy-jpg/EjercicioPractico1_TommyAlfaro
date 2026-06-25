@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/marco :: cabecera('Reservas')}"></head>
+    <body>
+        <header th:replace="~{fragmentos/marco :: menu}"></header>
+        <section th:replace="~{fragmentos/marco :: avisos}"></section>
+        <main class="container py-4">
+            <section class="modulo-captura">
+                <div>
+                    <span class="rotulo-modulo">Agenda</span>
+                    <h2>Reservar clase</h2>
+                </div>
+                <form class="formulario-en-linea tres-columnas" th:action="@{/cupos/guardar}" th:object="${cupoNuevo}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="campo-flex">
+                        <label class="form-label" for="nombreCliente">Participante</label>
+                        <input class="form-control" id="nombreCliente" th:field="*{nombreCliente}" required maxlength="100"/>
+                    </div>
+                    <div class="campo-flex campo-corto">
+                        <label class="form-label" for="fecha">Fecha</label>
+                        <input class="form-control" id="fecha" type="date" th:field="*{fecha}" required/>
+                    </div>
+                    <div class="campo-flex">
+                        <label class="form-label" for="servicio">Clase</label>
+                        <select class="form-select" id="servicio" th:field="*{servicio}" required>
+                            <option value="">Elija una clase</option>
+                            <option th:each="sesion : ${sesionesElegibles}" th:value="${sesion.id}" th:text="${sesion.nombre}"></option>
+                        </select>
+                    </div>
+                    <button class="btn btn-coral boton-alto" type="submit">
+                        <i class="fa-solid fa-calendar-plus me-2"></i>Reservar
+                    </button>
+                </form>
+            </section>
+
+            <section class="panel-registros">
+                <div class="titulo-lista">
+                    <h2>Reservas registradas</h2>
+                    <span th:text="${#lists.size(reservasAgenda)} + ' reservas'">0 reservas</span>
+                </div>
+                <div class="table-responsive panel-tabla">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Participante</th>
+                                <th>Fecha</th>
+                                <th>Clase</th>
+                                <th class="text-end">Gestion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="cupo : ${reservasAgenda}">
+                                <td th:text="${cupo.id}"></td>
+                                <td th:text="${cupo.nombreCliente}"></td>
+                                <td th:text="${#temporals.format(cupo.fecha, 'dd/MM/yyyy')}"></td>
+                                <td th:text="${cupo.servicio.nombre}"></td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-outline-dark" th:href="@{/cupos/editar/{codigo}(codigo=${cupo.id})}">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-danger" type="button"
+                                            data-bs-toggle="modal" data-bs-target="#modalBorrar"
+                                            th:data-codigo="${cupo.id}" th:data-nombre="${cupo.nombreCliente}">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(reservasAgenda)}">
+                                <td colspan="5" class="text-center py-4">No hay reservas registradas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <section th:replace="~{fragmentos/modal :: borrar('/cupos/borrar')}"></section>
+        <footer th:replace="~{fragmentos/marco :: pie}"></footer>
+    </body>
+</html>
